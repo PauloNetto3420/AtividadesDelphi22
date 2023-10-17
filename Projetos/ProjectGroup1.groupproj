@@ -1,0 +1,44 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{0ad3dbaa-e879-47d2-af4c-24540901ce41}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="ProjetoIdadeDias.dproj" />
+    <Projects Include="ProjetoNumReversox1.dproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+  <BorlandProject xmlns=""> <Default.Personality> </Default.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="ProjetoNumReversox1">
+    <MSBuild Projects="ProjetoNumReversox1.dproj" Targets="" />
+  </Target>
+  <Target Name="ProjetoNumReversox1:Clean">
+    <MSBuild Projects="ProjetoNumReversox1.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="ProjetoNumReversox1:Make">
+    <MSBuild Projects="ProjetoNumReversox1.dproj" Targets="Make" />
+  </Target>
+  <Target Name="ProjetoIdadeDias">
+    <MSBuild Projects="ProjetoIdadeDias.dproj" Targets="" />
+  </Target>
+  <Target Name="ProjetoIdadeDias:Clean">
+    <MSBuild Projects="ProjetoIdadeDias.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="ProjetoIdadeDias:Make">
+    <MSBuild Projects="ProjetoIdadeDias.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="ProjetoNumReversox1;ProjetoIdadeDias" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="ProjetoNumReversox1:Clean;ProjetoIdadeDias:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="ProjetoNumReversox1:Make;ProjetoIdadeDias:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

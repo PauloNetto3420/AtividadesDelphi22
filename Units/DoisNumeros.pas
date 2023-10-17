@@ -1,0 +1,66 @@
+unit DoisNumeros;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Edit1: TEdit;
+    Label1: TLabel;
+    Button1: TButton;
+    Edit2: TEdit;
+    Label2: TLabel;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+function Calculo(n, r : Integer) : Int64;
+var
+   num, den : Int64;
+   i : Integer;
+begin
+  if(r < 0) or (r > n) then
+  Result := 0
+  else
+  begin
+    num := 1;
+    den := 1;
+
+    for i := 1 to r do
+    begin
+      num := num * (n - 1 + 1);
+      den := den * i;
+    end;
+
+    Result := num div den;
+  end;
+end;
+
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  n, r, c : Integer;
+begin
+  n := StrToIntDef(Edit1.Text, 0);
+  r := StrToIntDef(Edit2.Text, 0);
+
+  c:= Calculo(n, r);
+
+  Label1.Caption := 'O número de combinações de ' + IntToStr(n) + ' objetos tomados ' + IntToStr(r) + ' de cada vez é: ' + IntToStr(c);
+
+end;
+
+end.

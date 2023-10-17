@@ -1,0 +1,65 @@
+unit SubsCaracter;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    EditStr1: TEdit;
+    EditStr2: TEdit;
+    Label1: TLabel;
+    Button1: TButton;
+    Label2: TLabel;
+    Label3: TLabel;
+    EditP: TEdit;
+    EditN: TEdit;
+    Label4: TLabel;
+    Label5: TLabel;
+    EditResultado: TEdit;
+    Label6: TLabel;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure SubstitueCarac(var cad1, cad2: string; P, N: Integer);
+begin
+  if (P > 0) and (P <= Length(cad1)) and (N >= 0) then
+  begin
+
+    if P + N - 1 > Length(cad1) then
+      N := Length(cad1) - P + 1;
+
+    Delete(cad1, P, N);
+    Insert(cad2, cad1, P);
+  end;
+end;
+
+
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  cad1, cad2: string;
+  P, N: Integer;
+begin
+  cad1 := EditStr1.Text;
+  cad2 := EditStr2.Text;
+  P := StrToInt(EditP.Text);
+  N := StrToInt(EditN.Text);
+
+  SubstitueCarac(cad1,cad2,P,N);
+  EditResultado.Text := cad1;
+end;
+end.

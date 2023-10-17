@@ -1,0 +1,57 @@
+unit NumRomano;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Button1: TButton;
+    Edit1: TEdit;
+    Label1: TLabel;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+function NumRomanoX(Valor : Integer) : string;
+const
+  NumRomano : array[1..13] of string = ('I', 'IV', 'V', 'IX', 'X', 'XL','L', 'XC', 'C', 'CD', 'D', 'CM', 'M');
+  NumNormal : array[1..13] of Integer = (1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000);
+var
+  i : Integer;
+begin
+  Result := '';
+  for i := 13 downto 1 do
+    begin
+      while Valor >= NumNormal[i] do
+      begin
+        Result := Result + NumRomano[i];
+        Valor := Valor - NumNormal[i];
+      end;
+    end;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  n : Integer;
+begin
+  n := StrToIntDef(Edit1.Text, 0);
+  if n > 0 then
+    Label1.Caption := 'O numero ' + Edit1.Text + ' em algarismo romano é ' + NumRomanoX(n)
+  else
+  Label1.Caption := 'Número Inválido';
+end;
+
+end.

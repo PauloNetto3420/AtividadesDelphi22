@@ -1,0 +1,46 @@
+unit Fatorial;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TfrmFat = class(TForm)
+    Label1: TLabel;
+    EditNum: TEdit;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmFat: TfrmFat;
+
+implementation
+
+{$R *.dfm}
+
+function FatorialX(Num : Integer) : Integer;
+var
+  Fat, I, n : integer;
+begin
+    n:=1;
+   for I := Num downto 1 do
+   begin
+      n := n * I;
+   end;
+     ShowMessage(IntToStr(n));
+
+end;
+
+procedure TfrmFat.Button1Click(Sender: TObject);
+begin
+    FatorialX(StrToInt(EditNum.Text));
+end;
+
+end.

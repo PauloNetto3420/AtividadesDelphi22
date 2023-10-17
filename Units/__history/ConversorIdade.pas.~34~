@@ -1,0 +1,44 @@
+unit ConversorIdade;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, DateUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ComCtrls, StdCtrls;
+
+type
+  TfrmIdade = class(TForm)
+    BtnIdade: TButton;
+    Label1: TLabel;
+    DateTimePicker1: TDateTimePicker;
+    LabelData: TLabel;
+    procedure BtnIdadeClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmIdade: TfrmIdade;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmIdade.BtnIdadeClick(Sender: TObject);
+var
+  Dias, Anos, Meses, IdadeAnos : Integer;
+  DiasStr, AnosStr, MesesStr : string;
+
+begin
+    Dias := DateTimeToFileDate(DateTimePicker1, 2);
+
+
+LabelData.Caption := FloatToStr(Dias);
+
+end;
+
+
+
+end.

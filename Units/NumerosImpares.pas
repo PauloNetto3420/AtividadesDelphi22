@@ -1,0 +1,50 @@
+unit NumerosImpares;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Grids;
+
+type
+  TForm1 = class(TForm)
+    Label1: TLabel;
+    Memo1: TMemo;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  I: Integer;
+  NumerosConcatenados: string;
+begin
+  Memo1.Lines.Clear;
+  NumerosConcatenados := '';
+
+  for I := 10 to 30 do
+  begin
+    if (I mod 2 = 1) then
+    begin
+      if NumerosConcatenados <> '' then
+        NumerosConcatenados := NumerosConcatenados + ' ';
+        NumerosConcatenados := NumerosConcatenados + IntToStr(I);
+    end;
+  end;
+
+  Memo1.Lines.Add(NumerosConcatenados);
+end;
+
+
+end.

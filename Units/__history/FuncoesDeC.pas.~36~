@@ -1,0 +1,103 @@
+unit FuncoesDeC;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Button1: TButton;
+    LblOrig: TLabel;
+    LblDest: TLabel;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+function Strlen(Palavra : String) : Integer;
+var
+I, Tam : Integer;
+begin
+  Tam := Length(Palavra);
+
+  for I := 1 to Tam do
+    begin
+      Result := I;
+    end;
+
+    ShowMessage('O tamanho da string é ' + IntToStr(Result));
+end;
+
+
+function strcmp(Palavra1, Palavra2 : string) : Integer;
+begin
+  Result := AnsiCompareStr(Palavra1, Palavra2);
+
+  if Result = 0 then
+  begin
+    ShowMessage(IntToStr(Result)+ '- As strings são iguais');
+  end
+  else if Result = 1 then
+  begin
+    ShowMessage(IntToStr(Result)+ '- A segunda string é diferente da primeira');
+  end
+  else
+  begin
+    ShowMessage(IntToStr(Result)+ '- A primeira string é diferente da segunda');
+  end;
+end;
+
+function strcnpy(const Palavra : string; N : Integer) : string;
+begin
+  if N < 1 then
+    Result := ''
+  else
+  begin
+    if Length(Palavra) < n then
+    N := Length(Palavra);
+
+    Result := Copy(Palavra, 1, N);
+   end;
+end;
+
+function strcat(Palavra1, Palavra2 : String) : String;
+var
+  Cat : String;
+begin
+  Cat := Palavra1 + Palavra2;
+  Result := Cat;
+
+  ShowMessage(Result);
+
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+//var
+ //Fonte, Destino : String;
+ //N : Integer;
+begin
+ // Fonte := Edit1.Text;
+  //N := StrToIntDef(Edit2.Text, 0);
+
+ // Destino := strcnpy(Fonte, N);
+
+  //LblOrig.Caption := 'Resultado: ' + Destino;
+
+  strcat(Edit1.Text, Edit2.Text);
+
+end;
+
+end.
